@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Track Complaint | CivicConnect AI</title>
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet"
+      href="style.css">
+
+
+<style>
+
+/* =========================================================
+   TRACKING PAGE
+========================================================= */
+
+.tracking-hero {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0e2748,
+            #173b70
+        );
+
+    color:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    margin-bottom:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.tracking-id {
+
+    font-size:11px;
+
+    color:#a9c1dd;
+
+    margin-bottom:5px;
+
+}
+
+.tracking-title {
+
+    font-size:24px;
+
+    margin-bottom:7px;
+
+}
+
+.tracking-location {
+
+    color:#b9c9dc;
+
+    font-size:10px;
+
+}
+
+.tracking-status {
+
+    text-align:right;
+
+}
+
+.status-circle {
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    margin-left:auto;
+
+    margin-bottom:7px;
+
+}
+
+.tracking-status span {
+
+    font-size:10px;
+
+    color:#a9d7ba;
+
+}
+
+
+/* TIMELINE */
+
+.timeline {
+
+    position:relative;
+
+    margin-top:10px;
+
+}
+
+.timeline::before {
+
+    content:"";
+
+    position:absolute;
+
+    left:20px;
+
+    top:22px;
+
+    bottom:22px;
+
+    width:2px;
+
+    background:#e6eaf0;
+
+}
+
+.timeline-item {
+
+    display:flex;
+
+    gap:18px;
+
+    position:relative;
+
+    padding-bottom:30px;
+
+}
+
+.timeline-item:last-child {
+
+    padding-bottom:0;
+
+}
+
+.timeline-icon {
+
+    width:42px;
+
+    height:42px;
+
+    min-width:42px;
+
+    border-radius:50%;
+
+    background:#f0f2f5;
+
+    border:3px solid white;
+
+    box-shadow:
+        0 0 0 1px #e5e8ee;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#98a1b1;
+
+    z-index:2;
+
+}
+
+.timeline-item.completed
+.timeline-icon {
+
+    background:#e7f7ed;
+
+    color:#26965b;
+
+    box-shadow:
+        0 0 0 1px #bce4ca;
+
+}
+
+.timeline-item.active
+.timeline-icon {
+
+    background:#eaf2ff;
+
+    color:#3974c6;
+
+    box-shadow:
+        0 0 0 1px #a9c8ec;
+
+    animation:pulse 2s infinite;
+
+}
+
+.timeline-content {
+
+    padding-top:3px;
+
+}
+
+.timeline-content h3 {
+
+    font-size:12px;
+
+    color:#28354d;
+
+    margin-bottom:4px;
+
+}
+
+.timeline-content p {
+
+    font-size:10px;
+
+    color:#8b95a7;
+
+    line-height:1.6;
+
+}
+
+.timeline-time {
+
+    display:block;
+
+    font-size:8px;
+
+    color:#9da6b4;
+
+    margin-top:6px;
+
+}
+
+@keyframes pulse {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 0 1px #a9c8ec;
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 6px rgba(57,116,198,.08);
+
+    }
+
+}
+
+
+/* AI INSIGHT */
+
+.ai-insight {
+
+    border:
+        1px solid #dce7f4;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0f6ff,
+            #f8fbff
+        );
+
+    border-radius:12px;
+
+    padding:18px;
+
+}
+
+.ai-insight-header {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+}
+
+.ai-insight-icon {
+
+    width:35px;
+
+    height:35px;
+
+    background:#173b70;
+
+    color:white;
+
+    border-radius:8px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.ai-insight h3 {
+
+    font-size:12px;
+
+    color:#173b70;
+
+}
+
+.ai-insight p {
+
+    font-size:10px;
+
+    color:#66758b;
+
+    line-height:1.7;
+
+}
+
+
+/* INFO GRID */
+
+.info-grid {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
+}
+
+.info-box {
+
+    background:#fafbfd;
+
+    border:1px solid #edf0f4;
+
+    border-radius:9px;
+
+    padding:13px;
+
+}
+
+.info-box span {
+
+    display:block;
+
+    font-size:8px;
+
+    color:#8b95a7;
+
+    margin-bottom:5px;
+
+}
+
+.info-box strong {
+
+    font-size:10px;
+
+    color:#28354d;
+
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:700px) {
+
+    .tracking-hero {
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .tracking-status {
+
+        text-align:left;
+
+    }
+
+    .status-circle {
+
+        margin-left:0;
+
+    }
+
+}
+
+</style>
+
+<link rel="stylesheet" href="/css/chatbot.css?v=final2">
+</head>
+
+
+<body class="page-tracking">
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            <i class="fa-solid fa-landmark"></i>
+        </div>
+
+        <div class="brand-text">
+
+            <h2>CivicConnect</h2>
+
+            <span>
+                AI Governance Platform
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+        <a href="submit.html">
+
+            <i class="fa-solid fa-plus"></i>
+
+            <span>Report Issue</span>
+
+        </a>
+
+        <a href="complaints.html">
+
+            <i class="fa-solid fa-folder-open"></i>
+
+            <span>My Complaints</span>
+
+        </a>
+
+        <a href="tracking.html"
+           class="active">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <span>Track</span>
+
+        </a>
+
+        <a href="analytics.html">
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            <span>Analytics</span>
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="page-container">
+
+
+    <!-- TRACKING HEADER -->
+
+    <section class="tracking-hero">
+
+        <div>
+
+            <div class="tracking-id"
+                 id="trackingId">
+
+                Complaint #CC1028
+
+            </div>
+
+            <h1 class="tracking-title"
+                id="trackingTitle">
+
+                Road damage near main junction
+
+            </h1>
+
+            <div class="tracking-location"
+                 id="trackingLocation">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Central Market Road
+
+            </div>
+
+        </div>
+
+
+        <div class="tracking-status">
+
+            <div class="status-circle">
+
+                <i class="fa-solid fa-spinner"></i>
+
+            </div>
+
+            <span>
+                Currently In Progress
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="content-grid">
+
+
+        <!-- TIMELINE -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        LIVE STATUS
+                    </span>
+
+                    <h2>
+                        Complaint Timeline
+                    </h2>
+
+                    <p>
+                        Follow the progress of your complaint
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline"
+                 id="timeline">
+
+
+                <div class="timeline-item completed">
+
+                    <div class="timeline-icon">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Complaint Submitted
+                        </h3>
+
+                        <p>
+                            Your complaint was successfully
+                            received by CivicConnect.
+                        </p>
+
+                        <span class="timeline-time">
+                            Today · 10:24 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="timeline-item completed">
+
+                    <div class="timeline-icon">
+
+                        <i class="fa-solid fa-brain"></i>
+
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            AI Processing Completed
+                        </h3>
+
+                        <p>
+                            Complaint language, category and
+                            priority were automatically analyzed.
+                        </p>
+
+                        <span class="timeline-time">
+                            Today · 10:25 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="timeline-item active">
+
+                    <div class="timeline-icon">
+
+                        <i class="fa-solid fa-user-check"></i>
+
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Department Assigned
+                        </h3>
+
+                        <p>
+                            Complaint assigned to the
+                            Public Works Department.
+                        </p>
+
+                        <span class="timeline-time">
+                            Today · 10:27 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-icon">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Officer Review
+                        </h3>
+
+                        <p>
+                            Authority officer will review
+                            the complaint.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Issue Resolved
+                        </h3>
+
+                        <p>
+                            Complaint will be marked resolved
+                            after verification.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SIDE -->
+
+        <div class="side-column">
+            <div class="panel gps-track-panel"><div class="panel-header"><div><span class="panel-eyebrow">LIVE LOCATION</span><h2>Issue Map</h2></div><span class="admin-pill">GPS</span></div><div id="trackingMap" class="gps-map tracking-map"></div><small class="muted">Captured complaint coordinates are shown here when GPS permission was available.</small></div>
+
+
+            <!-- AI INSIGHT -->
+
+            <div class="ai-insight">
+
+                <div class="ai-insight-header">
+
+                    <div class="ai-insight-icon">
+
+                        <i class="fa-solid fa-brain"></i>
+
+                    </div>
+
+                    <h3>
+                        CivicConnect AI Insight
+                    </h3>
+
+                </div>
+
+                <p id="aiInsight">
+
+                    Based on complaint content and severity,
+                    this issue has been prioritized for
+                    authority review.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- DETAILS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            COMPLAINT DETAILS
+                        </span>
+
+                        <h2>
+                            AI Classification
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <span>
+                            CATEGORY
+                        </span>
+
+                        <strong id="detailCategory">
+                            Infrastructure
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            PRIORITY
+                        </span>
+
+                        <strong id="detailPriority">
+                            Critical
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            DEPARTMENT
+                        </span>
+
+                        <strong id="detailDepartment">
+                            Public Works
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            AI CONFIDENCE
+                        </span>
+
+                        <strong id="detailConfidence">
+                            94%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MAP PLACEHOLDER -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            LOCATION
+                        </span>
+
+                        <h2>
+                            Complaint Location
+                        </h2>
+
+                    </div>
+
+                </div>
+
+                <div style="
+                    height:160px;
+                    border-radius:10px;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #e9eef5,
+                        #dfe7f1
+                    );
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:#6e7e94;
+                    position:relative;
+                    overflow:hidden;
+                ">
+
+                    <div style="
+                        position:absolute;
+                        width:200px;
+                        height:1px;
+                        background:#c5cfdb;
+                        transform:rotate(25deg);
+                    "></div>
+
+                    <div style="
+                        position:absolute;
+                        width:200px;
+                        height:1px;
+                        background:#c5cfdb;
+                        transform:rotate(-35deg);
+                    "></div>
+
+                    <div style="
+                        position:absolute;
+                        width:30px;
+                        height:30px;
+                        border-radius:50%;
+                        background:#d7434b;
+                        color:white;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        box-shadow:0 5px 15px rgba(215,67,75,.3);
+                    ">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<section class="panel resolution-proof-panel" id="resolutionProof"><div class="proof-empty"><i class="fa-solid fa-camera"></i><div><strong>Resolution proof</strong><p>Loading government evidence...</p></div></div></section>
+<script src="../js/api.js"></script>
+<script src="../js/tracking.js"></script>
+
+<script src="../js/storage.js"></script>
+
+<script src="/js/chatbot.js?v=final2"></script>
+</body>
+
+</html>

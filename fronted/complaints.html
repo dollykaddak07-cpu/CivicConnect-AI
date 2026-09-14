@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>My Complaints | CivicConnect AI</title>
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet"
+      href="style.css">
+
+<link rel="stylesheet" href="/css/chatbot.css?v=final2">
+</head>
+
+
+<body class="page-complaints">
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            <i class="fa-solid fa-landmark"></i>
+        </div>
+
+        <div class="brand-text">
+
+            <h2>CivicConnect</h2>
+
+            <span>
+                AI Governance Platform
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="submit.html">
+            <i class="fa-solid fa-plus"></i>
+            <span>Report Issue</span>
+        </a>
+
+        <a href="complaints.html"
+           class="active">
+
+            <i class="fa-solid fa-folder-open"></i>
+            <span>My Complaints</span>
+
+        </a>
+
+        <a href="tracking.html">
+
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Track</span>
+
+        </a>
+
+        <a href="analytics.html">
+
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Analytics</span>
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="page-container">
+
+
+    <div class="page-title">
+
+        <div class="eyebrow">
+
+            <i class="fa-solid fa-folder-open"></i>
+
+            COMPLAINT MANAGEMENT
+
+        </div>
+
+        <h1>
+            My Complaints
+        </h1>
+
+        <p>
+            View and manage all your submitted civic complaints.
+        </p>
+
+    </div>
+
+
+
+    <!-- FILTER BAR -->
+
+    <div class="panel"
+         style="margin-bottom:20px;">
+
+        <div style="
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+        ">
+
+            <button
+                class="btn btn-secondary filter-btn active-filter"
+                data-filter="all"
+                style="cursor:pointer;border:1px solid #e6eaf0;color:#173b70;background:#eaf2ff;"
+            >
+                All
+            </button>
+
+            <button
+                class="btn btn-secondary filter-btn"
+                data-filter="pending"
+                style="cursor:pointer;border:1px solid #e6eaf0;color:#667085;"
+            >
+                Pending
+            </button>
+
+            <button
+                class="btn btn-secondary filter-btn"
+                data-filter="progress"
+                style="cursor:pointer;border:1px solid #e6eaf0;color:#667085;"
+            >
+                In Progress
+            </button>
+
+            <button
+                class="btn btn-secondary filter-btn"
+                data-filter="resolved"
+                style="cursor:pointer;border:1px solid #e6eaf0;color:#667085;"
+            >
+                Resolved
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COMPLAINT LIST -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-eyebrow">
+                    COMPLAINT HISTORY
+                </span>
+
+                <h2>
+                    Submitted Issues
+                </h2>
+
+                <p>
+                    Your complete complaint history
+                </p>
+
+            </div>
+
+            <a href="submit.html"
+               class="btn btn-primary"
+               style="
+                    background:#173b70;
+                    color:white;
+               ">
+
+                <i class="fa-solid fa-plus"></i>
+
+                New Complaint
+
+            </a>
+
+        </div>
+
+
+        <div class="complaint-table-wrapper">
+
+            <table
+                class="complaint-table"
+                id="complaintsTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Complaint</th>
+
+                        <th>Category</th>
+
+                        <th>Priority</th>
+
+                        <th>Department</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr data-status="progress"
+                        data-id="CC1028">
+
+                        <td>
+                            <strong>
+                                #CC1028
+                            </strong>
+                        </td>
+
+                        <td>
+
+                            <div class="issue-cell">
+
+                                <div class="issue-icon">
+                                    <i class="fa-solid fa-road"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Road damage near junction
+                                    </strong>
+
+                                    <span>
+                                        Central Market Road
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Infrastructure
+                        </td>
+
+                        <td>
+                            <span class="badge critical">
+                                Critical
+                            </span>
+                        </td>
+
+                        <td>
+                            Public Works
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge progress">
+
+                                <span></span>
+
+                                In Progress
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr data-status="resolved"
+                        data-id="CC1027">
+
+                        <td>
+                            <strong>
+                                #CC1027
+                            </strong>
+                        </td>
+
+                        <td>
+
+                            <div class="issue-cell">
+
+                                <div class="issue-icon green-icon">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Garbage collection delayed
+                                    </strong>
+
+                                    <span>
+                                        Ward 12
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Sanitation
+                        </td>
+
+                        <td>
+                            <span class="badge medium">
+                                Medium
+                            </span>
+                        </td>
+
+                        <td>
+                            Sanitation
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge resolved">
+
+                                <span></span>
+
+                                Resolved
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr data-status="pending"
+                        data-id="CC1026">
+
+                        <td>
+                            <strong>
+                                #CC1026
+                            </strong>
+                        </td>
+
+                        <td>
+
+                            <div class="issue-cell">
+
+                                <div class="issue-icon yellow-icon">
+
+                                    <i class="fa-solid fa-lightbulb"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Street lights not working
+                                    </strong>
+
+                                    <span>
+                                        Station Road
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            Electricity
+                        </td>
+
+                        <td>
+                            <span class="badge low">
+                                Low
+                            </span>
+                        </td>
+
+                        <td>
+                            Electricity
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge pending">
+
+                                <span></span>
+
+                                Pending
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<script src="../js/api.js"></script>
+<script src="../js/complaints.js"></script>
+
+<script src="../js/storage.js"></script>
+
+<script src="/js/chatbot.js?v=final2"></script>
+</body>
+
+</html>

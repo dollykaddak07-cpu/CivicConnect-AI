@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Complaint | CivicConnect AI</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          >
+
+    <link rel="stylesheet"
+          href="style.css">
+
+<link rel="stylesheet" href="/css/chatbot.css?v=final2">
+</head>
+
+<body class="page-submit">
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            <i class="fa-solid fa-landmark"></i>
+        </div>
+
+        <div class="brand-text">
+
+            <h2>CivicConnect</h2>
+
+            <span>
+                AI Governance Platform
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="submit.html" class="active">
+            <i class="fa-solid fa-plus"></i>
+            <span>Report Issue</span>
+        </a>
+
+        <a href="complaints.html">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>My Complaints</span>
+        </a>
+
+        <a href="tracking.html">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Track</span>
+        </a>
+
+        <a href="analytics.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Analytics</span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="page-container">
+
+
+    <div class="page-title">
+
+        <div class="eyebrow">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            CITIZEN SERVICES
+        </div>
+
+        <h1>
+            Report a Civic Issue
+        </h1>
+
+        <p>
+            Submit your complaint in English, Hindi or Marathi.
+            CivicConnect AI will process it automatically.
+        </p>
+
+    </div>
+
+
+
+    <section class="content-grid">
+
+
+        <!-- ==========================================
+             FORM
+        ========================================== -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        COMPLAINT FORM
+                    </span>
+
+                    <h2>
+                        Issue Details
+                    </h2>
+
+                    <p>
+                        Tell us what happened
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="complaintForm">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Complaint Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="complaintTitle"
+                        placeholder="Example: Road damaged near market"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Describe Your Issue
+                    </label>
+
+                    <textarea
+                        id="complaintDescription"
+                        placeholder="You can write your complaint in English, Hindi or Marathi..."
+                        required
+                    ></textarea>
+
+                    <small style="
+                        color:#8b95a7;
+                        font-size:9px;
+                    ">
+                        <i class="fa-solid fa-language"></i>
+                        Multilingual input supported
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="complaintLocation"
+                        placeholder="Example: Ward 12, Main Road"
+                        required
+                    >
+
+                    <div class="gps-card" id="gpsCard">
+                        <div class="gps-card-head">
+                            <div class="gps-card-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+                            <div>
+                                <strong>Live GPS Location</strong>
+                                <span>Automatically capture the citizen's current location</span>
+                            </div>
+                            <span class="gps-live-dot"><span></span> GPS READY</span>
+                        </div>
+                        <button type="button" class="btn btn-primary gps-main-btn" id="useMyLocation">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            Use My Current Location
+                        </button>
+                        <div class="gps-status-box" id="gpsStatus">Click the button above and allow location access in Chrome.</div>
+                        <div class="gps-meta"><span id="gpsCoords">Coordinates not captured</span><span id="gpsAccuracy">Waiting for GPS</span></div>
+                        <div id="gpsMap" class="gps-map"></div>
+                    </div>
+                    <input type="hidden" id="complaintLatitude"><input type="hidden" id="complaintLongitude">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select id="complaintCategory">
+
+                        <option value="">
+                            AI will automatically classify
+                        </option>
+
+                        <option>
+                            Roads & Infrastructure
+                        </option>
+
+                        <option>
+                            Water Supply
+                        </option>
+
+                        <option>
+                            Electricity
+                        </option>
+
+                        <option>
+                            Sanitation
+                        </option>
+
+                        <option>
+                            Public Safety
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Evidence
+                    </label>
+
+                    <input
+                        type="file"
+                        id="complaintEvidence"
+                        accept="image/*"
+                    >
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="
+                        background:#173b70;
+                        color:white;
+                        border:none;
+                        cursor:pointer;
+                    "
+                >
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Complaint
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             AI PIPELINE
+        ========================================== -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        ARTIFICIAL INTELLIGENCE
+                    </span>
+
+                    <h2>
+                        AI Processing Pipeline
+                    </h2>
+
+                    <p>
+                        Intelligent complaint analysis
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="aiPipeline">
+
+
+                <div class="quick-action">
+
+                    <div class="quick-icon blue">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Language Detection
+                        </strong>
+
+                        <span>
+                            Detect English, Hindi or Marathi
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quick-action">
+
+                    <div class="quick-icon purple">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            AI Translation
+                        </strong>
+
+                        <span>
+                            Convert complaint for authorities
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quick-action">
+
+                    <div class="quick-icon orange">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Complaint Classification
+                        </strong>
+
+                        <span>
+                            Identify issue category
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quick-action">
+
+                    <div class="quick-icon red">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Priority Detection
+                        </strong>
+
+                        <span>
+                            Calculate urgency
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quick-action">
+
+                    <div class="quick-icon green">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Department Recommendation
+                        </strong>
+
+                        <span>
+                            Assign the appropriate authority
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="aiResult"
+                 style="display:none; margin-top:20px;">
+
+                <div class="ai-mini-card">
+
+                    <div class="ai-mini-top">
+
+                        <div class="ai-mini-icon">
+
+                            <i class="fa-solid fa-brain"></i>
+
+                        </div>
+
+                        <span class="live-indicator">
+
+                            <span></span>
+
+                            AI ANALYZED
+
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Complaint Successfully Processed
+                    </h3>
+
+                    <p id="aiSummary">
+                        AI processing complete.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// GPS button fallback: bind directly even if another script fails.
+document.addEventListener("DOMContentLoaded", function(){
+  const btn=document.getElementById("useMyLocation");
+  const status=document.getElementById("gpsStatus");
+  if(!btn)return;
+  btn.onclick=function(){
+    if(window.CivicGPS&&typeof window.CivicGPS.locate==="function"){window.CivicGPS.locate();return;}
+    if(!navigator.geolocation){if(status)status.textContent="❌ Your browser does not support location.";return;}
+    if(status)status.textContent="📡 Requesting location... Please allow Chrome location access.";
+    navigator.geolocation.getCurrentPosition(function(pos){
+      document.getElementById("complaintLatitude").value=pos.coords.latitude;
+      document.getElementById("complaintLongitude").value=pos.coords.longitude;
+      document.getElementById("gpsCoords").textContent=`Latitude ${pos.coords.latitude.toFixed(6)} | Longitude ${pos.coords.longitude.toFixed(6)}`;
+      document.getElementById("gpsAccuracy").textContent=`${Math.round(pos.coords.accuracy||0)} m accuracy`;
+      if(status)status.textContent="GPS location captured successfully ✓";
+    },function(err){
+      if(status)status.textContent=err.code===1?"❌ Permission denied. Chrome site settings → Location → Allow.":err.code===2?"❌ Location unavailable. Turn on Windows Location Services.":"❌ GPS timed out. Turn on Wi‑Fi and try again.";
+    },{enableHighAccuracy:true,timeout:30000,maximumAge:0});
+  };
+});
+</script>
+<script src="/js/api.js"></script>
+<script src="/js/gps.js"></script>
+<script src="/js/submit.js"></script>
+<script src="/js/storage.js"></script>
+
+<script src="/js/chatbot.js?v=final2"></script>
+</body>
+
+</html>

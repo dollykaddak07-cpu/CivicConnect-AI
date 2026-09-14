@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CivicConnect AI — Governance Analytics</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="/css/chatbot.css?v=analytics-final3">
+</head>
+<body class="cc-analytics-page">
+  <div class="cc-shell">
+    <aside class="cc-sidebar">
+      <div class="cc-brand">
+        <div class="cc-brand-mark">CC</div>
+        <div><strong>CivicConnect</strong><span>AI GOVERNANCE</span></div>
+      </div>
+
+      <div class="cc-nav-label">WORKSPACE</div>
+      <nav class="cc-nav">
+        <a href="index.html" title="Citizen Dashboard"><span class="cc-nav-icon">⌂</span><span>Dashboard</span></a>
+        <a href="complaints.html" title="Complaint Management"><span class="cc-nav-icon">▤</span><span>Complaints</span></a>
+        <a href="submit.html" title="Report Civic Issue"><span class="cc-nav-icon">＋</span><span>Submit Complaint</span></a>
+        <a href="tracking.html" title="Track Complaint"><span class="cc-nav-icon">◎</span><span>Tracking</span></a>
+        <a class="active" href="analytics.html" title="Governance Analytics"><span class="cc-nav-icon">▥</span><span>Analytics</span><b>LIVE</b></a>
+        <a href="admin.html" title="Government Administration"><span class="cc-nav-icon">⚙</span><span>Administration</span></a>
+      </nav>
+
+      <div class="cc-sidebar-spacer"></div>
+      <div class="cc-system-card">
+        <div class="cc-system-top"><span class="cc-live-dot"></span><strong>AI SYSTEM ONLINE</strong></div>
+        <p>Complaint intelligence services are operational.</p>
+      </div>
+      <div class="cc-sidebar-footer">CivicConnect AI <span>v2.0</span></div>
+    </aside>
+
+    <main class="cc-main">
+      <header class="cc-topbar">
+        <div class="cc-breadcrumb"><span>GOVERNANCE INTELLIGENCE</span><i>/</i><strong>Analytics</strong></div>
+        <div class="cc-top-actions">
+          <button class="cc-icon-btn" title="Refresh analytics" id="refreshBtn">↻</button>
+          <button class="cc-icon-btn" title="Notifications">♧</button>
+          <div class="cc-user"><div class="cc-avatar">DK</div><div><strong>Administrator</strong><span>Government Admin</span></div></div>
+        </div>
+      </header>
+
+      <div class="cc-content">
+        <section class="cc-page-head">
+          <div>
+            <div class="cc-eyebrow"><span></span> LIVE CIVIC DATA</div>
+            <h1>Governance Analytics</h1>
+            <p>Turn citizen complaints into actionable insights for faster public service delivery.</p>
+          </div>
+          <div class="cc-head-actions">
+            <label class="cc-select-wrap"><span>Period</span><select id="analysisPeriod"><option value="all">All time</option><option value="year">This year</option><option value="quarter">Last 3 months</option><option value="month">Last 30 days</option></select></label>
+            <button id="exportReportBtn" class="cc-export">⇩ Export report</button>
+          </div>
+        </section>
+
+        <section class="cc-kpi-grid">
+          <article class="cc-kpi kpi-blue"><div class="cc-kpi-icon">▦</div><div><span>Total complaints</span><strong id="totalComplaints">—</strong><small>All registered citizen issues</small></div></article>
+          <article class="cc-kpi kpi-green"><div class="cc-kpi-icon">✓</div><div><span>Resolved</span><strong id="resolvedComplaints">—</strong><small id="resolvedSub">Successfully closed</small></div></article>
+          <article class="cc-kpi kpi-amber"><div class="cc-kpi-icon">◷</div><div><span>Active cases</span><strong id="pendingComplaints">—</strong><small>Pending + in progress</small></div></article>
+          <article class="cc-kpi kpi-red"><div class="cc-kpi-icon">!</div><div><span>Critical</span><strong id="criticalComplaints">—</strong><small>Priority attention required</small></div></article>
+          <article class="cc-kpi kpi-purple"><div class="cc-kpi-icon">⌖</div><div><span>GPS coverage</span><strong id="gpsCoverage">—</strong><small>Complaints with location data</small></div></article>
+        </section>
+
+        <section class="cc-performance-grid">
+          <article class="cc-panel cc-performance">
+            <div class="cc-panel-head"><div><span>RESOLUTION PERFORMANCE</span><h2>Service delivery health</h2></div><div class="cc-live-pill"><span></span> Live</div></div>
+            <div class="cc-resolution-row"><div class="cc-resolution-number" id="resolutionRate">0%</div><div class="cc-resolution-copy"><strong>Overall resolution rate</strong><p>Share of complaints successfully resolved.</p></div></div>
+            <div class="cc-progress"><span id="resolutionProgress"></span></div>
+            <div class="cc-status-grid">
+              <div><span><i class="dot resolved"></i>Resolved</span><strong id="statusResolved">0</strong></div>
+              <div><span><i class="dot progress"></i>In progress</span><strong id="statusProgress">0</strong></div>
+              <div><span><i class="dot pending"></i>Pending</span><strong id="statusPending">0</strong></div>
+              <div><span><i class="dot rejected"></i>Rejected</span><strong id="statusRejected">0</strong></div>
+            </div>
+          </article>
+
+          <article class="cc-panel cc-ai-insight">
+            <div class="cc-ai-orb">✦</div><div class="cc-panel-head"><div><span>AI GOVERNANCE INSIGHT</span><h2>What needs attention?</h2></div></div>
+            <div id="insightText" class="cc-insight-text">Loading live complaint intelligence…</div>
+            <div class="cc-insight-list" id="insightList"></div>
+          </article>
+        </section>
+
+        <section class="cc-chart-grid">
+          <article class="cc-panel cc-chart-wide"><div class="cc-panel-head"><div><span>COMPLAINT ACTIVITY</span><h2>Complaint volume trend</h2></div><div class="cc-chart-note">Monthly</div></div><div class="cc-chart"><canvas id="complaintTrendChart"></canvas></div></article>
+          <article class="cc-panel"><div class="cc-panel-head"><div><span>ISSUE MIX</span><h2>Complaint categories</h2></div></div><div class="cc-chart cc-doughnut"><canvas id="categoryChart"></canvas><div class="cc-donut-center"><strong id="categoryCount">0</strong><span>issues</span></div></div></article>
+          <article class="cc-panel"><div class="cc-panel-head"><div><span>SEVERITY</span><h2>Priority distribution</h2></div></div><div class="cc-chart cc-doughnut"><canvas id="priorityChart"></canvas></div></article>
+          <article class="cc-panel cc-chart-wide"><div class="cc-panel-head"><div><span>AUTHORITY PERFORMANCE</span><h2>Department workload & resolution</h2></div></div><div class="cc-chart"><canvas id="departmentChart"></canvas></div></article>
+        </section>
+
+        <section class="cc-bottom-grid">
+          <article class="cc-panel"><div class="cc-panel-head"><div><span>GEOGRAPHICAL VIEW</span><h2>Complaint distribution by zone</h2></div><span class="cc-small-note">Based on submitted locations</span></div><div class="cc-table-wrap"><table class="cc-table"><thead><tr><th>Zone / location</th><th>Cases</th><th>Resolved</th><th>Critical</th><th>Rate</th></tr></thead><tbody id="locationTableBody"></tbody></table></div></article>
+          <article class="cc-panel cc-top-issues"><div class="cc-panel-head"><div><span>TOP ISSUES</span><h2>Most reported categories</h2></div></div><div id="topIssues"></div></article>
+        </section>
+
+        <footer class="cc-footer">CivicConnect AI <span>•</span> Multilingual Citizen Complaint & Governance CRM <span>•</span> Analytics updates from the live database</footer>
+      </div>
+    </main>
+  </div>
+  <div id="analyticsToast" class="cc-toast"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/analytics.js"></script>
+
+<script src="/js/chatbot.js?v=analytics-final3"></script>
+</body>
+</html>

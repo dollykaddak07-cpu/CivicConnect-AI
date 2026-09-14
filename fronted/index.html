@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CivicConnect AI - Multilingual Citizen Governance Platform">
+
+    <title>CivicConnect AI | Citizen Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+<link rel="stylesheet" href="/css/chatbot.css?v=final2">
+</head>
+
+<body class="page-dashboard">
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            <i class="fa-solid fa-landmark"></i>
+        </div>
+
+        <div class="brand-text">
+            <h2>CivicConnect</h2>
+            <span>AI Governance Platform</span>
+        </div>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html" class="active">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="submit.html">
+            <i class="fa-solid fa-plus"></i>
+            <span>Report Issue</span>
+        </a>
+
+        <a href="complaints.html">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>My Complaints</span>
+        </a>
+
+        <a href="tracking.html">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Track</span>
+        </a>
+
+        <a href="analytics.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Analytics</span>
+        </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+        <button class="icon-button"
+                id="notificationButton"
+                aria-label="Notifications">
+
+            <i class="fa-regular fa-bell"></i>
+
+            <span class="notification-count">
+                3
+            </span>
+
+        </button>
+
+
+        <div class="user-profile">
+
+            <div class="user-avatar">
+                DC
+            </div>
+
+            <div class="user-info">
+                <strong>Citizen</strong>
+                <span>Citizen Portal</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main class="page-container">
+
+
+    <!-- HERO -->
+
+    <section class="dashboard-hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <i class="fa-solid fa-shield-halved"></i>
+                CITIZEN PORTAL
+            </div>
+
+            <h1>
+                Your Voice.
+                <span>Our Action.</span>
+            </h1>
+
+            <p>
+                Report civic problems, track their progress and
+                stay connected with your local authorities.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="submit.html"
+                   class="btn btn-primary">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Report a Civic Issue
+
+                </a>
+
+                <a href="tracking.html"
+                   class="btn btn-secondary">
+
+                    <i class="fa-solid fa-location-crosshairs"></i>
+
+                    Track Complaint
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI VISUAL -->
+
+        <div class="hero-ai">
+
+            <div class="ai-orbit orbit-one"></div>
+            <div class="ai-orbit orbit-two"></div>
+
+            <div class="ai-core">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="ai-label">
+
+                <strong>CivicConnect AI</strong>
+
+                <span>Intelligent Processing</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         STATISTICS
+    ========================================== -->
+
+    <section class="stats-grid">
+
+
+        <article class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <span class="stat-trend positive">
+                    +12%
+                </span>
+
+            </div>
+
+            <span class="stat-label">
+                Total Complaints
+            </span>
+
+            <strong class="stat-number">
+                128
+            </strong>
+
+            <span class="stat-footer">
+                This month
+            </span>
+
+        </article>
+
+
+
+        <article class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <span class="stat-trend positive">
+                    67.2%
+                </span>
+
+            </div>
+
+            <span class="stat-label">
+                Resolved
+            </span>
+
+            <strong class="stat-number">
+                86
+            </strong>
+
+            <span class="stat-footer">
+                Resolution rate
+            </span>
+
+        </article>
+
+
+
+        <article class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-spinner"></i>
+                </div>
+
+                <span class="stat-trend">
+                    24.2%
+                </span>
+
+            </div>
+
+            <span class="stat-label">
+                In Progress
+            </span>
+
+            <strong class="stat-number">
+                31
+            </strong>
+
+            <span class="stat-footer">
+                Currently active
+            </span>
+
+        </article>
+
+
+
+        <article class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon red">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <span class="stat-trend danger">
+                    Attention
+                </span>
+
+            </div>
+
+            <span class="stat-label">
+                Critical Issues
+            </span>
+
+            <strong class="stat-number">
+                11
+            </strong>
+
+            <span class="stat-footer">
+                Need immediate action
+            </span>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MAIN DASHBOARD
+    ========================================== -->
+
+    <section class="content-grid">
+
+
+        <!-- RECENT COMPLAINTS -->
+
+        <div class="panel large-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Complaints
+                    </h2>
+
+                    <p>
+                        Latest updates from your complaints
+                    </p>
+
+                </div>
+
+                <a href="complaints.html"
+                   class="text-button">
+
+                    View All
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="complaint-table-wrapper">
+
+                <table class="complaint-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Issue</th>
+
+                            <th>Category</th>
+
+                            <th>Priority</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr data-id="CC1028">
+
+                            <td>
+                                <strong>#CC1028</strong>
+                            </td>
+
+                            <td>
+                                <div class="issue-cell">
+
+                                    <div class="issue-icon">
+                                        <i class="fa-solid fa-road"></i>
+                                    </div>
+
+                                    <div>
+                                        <strong>
+                                            Road damage near main junction
+                                        </strong>
+
+                                        <span>
+                                            Central Market Road
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </td>
+
+                            <td>
+                                Infrastructure
+                            </td>
+
+                            <td>
+                                <span class="badge critical">
+                                    Critical
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status-badge progress">
+                                    <span></span>
+                                    In Progress
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+
+                        <tr data-id="CC1027">
+
+                            <td>
+                                <strong>#CC1027</strong>
+                            </td>
+
+                            <td>
+
+                                <div class="issue-cell">
+
+                                    <div class="issue-icon green-icon">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Garbage collection delayed
+                                        </strong>
+
+                                        <span>
+                                            Ward 12
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Sanitation
+                            </td>
+
+                            <td>
+
+                                <span class="badge medium">
+                                    Medium
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge resolved">
+                                    <span></span>
+                                    Resolved
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <tr data-id="CC1026">
+
+                            <td>
+                                <strong>#CC1026</strong>
+                            </td>
+
+                            <td>
+
+                                <div class="issue-cell">
+
+                                    <div class="issue-icon yellow-icon">
+                                        <i class="fa-solid fa-lightbulb"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Street lights not working
+                                        </strong>
+
+                                        <span>
+                                            Station Road
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Electricity
+                            </td>
+
+                            <td>
+
+                                <span class="badge low">
+                                    Low
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge pending">
+                                    <span></span>
+                                    Pending
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <tr data-id="CC1025">
+
+                            <td>
+                                <strong>#CC1025</strong>
+                            </td>
+
+                            <td>
+
+                                <div class="issue-cell">
+
+                                    <div class="issue-icon blue-icon">
+                                        <i class="fa-solid fa-droplet"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Water supply interruption
+                                        </strong>
+
+                                        <span>
+                                            Shivaji Nagar
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Water
+                            </td>
+
+                            <td>
+
+                                <span class="badge critical">
+                                    Critical
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge progress">
+                                    <span></span>
+                                    In Progress
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <aside class="side-column">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            SERVICES
+                        </span>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+
+                    <a href="submit.html"
+                       class="quick-action">
+
+                        <div class="quick-icon blue">
+                            <i class="fa-solid fa-file-circle-plus"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Submit Complaint
+                            </strong>
+
+                            <span>
+                                Report a civic issue
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+
+                    <a href="tracking.html"
+                       class="quick-action">
+
+                        <div class="quick-icon purple">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Track Complaint
+                            </strong>
+
+                            <span>
+                                See real-time progress
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+
+
+                    <a href="analytics.html"
+                       class="quick-action">
+
+                        <div class="quick-icon green">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Civic Analytics
+                            </strong>
+
+                            <span>
+                                Explore city insights
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AI CARD -->
+
+            <div class="ai-mini-card">
+
+                <div class="ai-mini-top">
+
+                    <div class="ai-mini-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+
+                    <span class="live-indicator">
+                        <span></span>
+                        AI ONLINE
+                    </span>
+
+                </div>
+
+                <h3>
+                    Smart Complaint Processing
+                </h3>
+
+                <p>
+                    AI understands your complaint, detects language,
+                    classifies the issue and recommends the right
+                    government department.
+                </p>
+
+                <div class="ai-mini-features">
+
+                    <span>
+                        <i class="fa-solid fa-language"></i>
+                        Multilingual
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-brain"></i>
+                        AI Classification
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-bolt"></i>
+                        Priority AI
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <div>
+
+        <strong>
+            CivicConnect AI
+        </strong>
+
+        <span>
+            Multilingual Citizen Governance Platform
+        </span>
+
+    </div>
+
+    <div>
+        © 2026 CivicConnect
+    </div>
+
+</footer>
+
+
+<script src="../js/api.js"></script>
+<script src="../js/app.js"></script>
+
+<script src="../js/storage.js"></script>
+
+<script src="/js/chatbot.js?v=final2"></script>
+</body>
+
+</html>

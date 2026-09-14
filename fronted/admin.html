@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Administration | CivicConnect AI</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/css/chatbot.css?v=final2">
+</head>
+<body class="page-admin">
+<header class="navbar">
+  <div class="brand"><div class="brand-logo"><i class="fa-solid fa-landmark"></i></div><div class="brand-text"><h2>CivicConnect AI</h2><span>Governance Intelligence</span></div></div>
+  <nav class="main-nav">
+    <a href="index.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+    <a href="submit.html"><i class="fa-solid fa-plus"></i><span>Report Issue</span></a>
+    <a href="complaints.html"><i class="fa-solid fa-folder-open"></i><span>Complaints</span></a>
+    <a href="tracking.html"><i class="fa-solid fa-location-dot"></i><span>Tracking</span></a>
+    <a href="analytics.html"><i class="fa-solid fa-chart-pie"></i><span>Analytics</span></a>
+    <a href="admin.html" class="active"><i class="fa-solid fa-shield-halved"></i><span>Administration</span></a>
+  </nav>
+  <div class="nav-actions"><button class="icon-button"><i class="fa-regular fa-bell"></i><span class="notification-count">3</span></button><div class="user-profile"><div class="user-avatar">AD</div><div class="user-info"><strong>Administrator</strong><span>Government Admin</span></div></div></div>
+</header>
+<main class="page-container">
+  <div class="page-title"><div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> ADMINISTRATION CONTROL CENTER</div><h1>Government Operations</h1><p>Manage departments, officers, assignments and platform activity from one workspace.</p></div>
+  <section class="admin-grid">
+    <article class="admin-card"><div class="admin-icon"><i class="fa-solid fa-users"></i></div><strong>42</strong><span>Active Officers</span></article>
+    <article class="admin-card"><div class="admin-icon"><i class="fa-solid fa-building-columns"></i></div><strong>8</strong><span>Departments</span></article>
+    <article class="admin-card"><div class="admin-icon"><i class="fa-solid fa-clock"></i></div><strong>94%</strong><span>SLA Compliance</span></article>
+    <article class="admin-card"><div class="admin-icon"><i class="fa-solid fa-bolt"></i></div><strong>12</strong><span>Escalations Today</span></article>
+  </section>
+  <section class="admin-layout">
+    <div class="panel">
+      <div class="panel-header"><div><span class="panel-eyebrow">LIVE OPERATIONS</span><h2>Department Workload</h2></div><span class="admin-pill">Updated just now</span></div>
+      <div style="overflow:auto"><table class="admin-table"><thead><tr><th>Department</th><th>Assigned</th><th>Pending</th><th>Resolved</th><th>Performance</th></tr></thead><tbody>
+        <tr><td><strong>Public Works</strong></td><td>186</td><td>42</td><td>144</td><td><span class="admin-pill">92%</span></td></tr>
+        <tr><td><strong>Water Supply</strong></td><td>124</td><td>29</td><td>95</td><td><span class="admin-pill">89%</span></td></tr>
+        <tr><td><strong>Sanitation</strong></td><td>98</td><td>17</td><td>81</td><td><span class="admin-pill">94%</span></td></tr>
+        <tr><td><strong>Electricity</strong></td><td>76</td><td>11</td><td>65</td><td><span class="admin-pill">96%</span></td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div><span class="panel-eyebrow">SYSTEM STATUS</span><h2>Platform Health</h2></div></div>
+      <div class="quick-action"><div class="quick-icon green"><i class="fa-solid fa-database"></i></div><div><strong>Complaint Database</strong><span>Operational · 99.98% uptime</span></div></div>
+      <div class="quick-action"><div class="quick-icon blue"><i class="fa-solid fa-brain"></i></div><div><strong>AI Classification</strong><span>Operational · 97.4% confidence</span></div></div>
+      <div class="quick-action"><div class="quick-icon purple"><i class="fa-solid fa-language"></i></div><div><strong>Translation Service</strong><span>Operational · 3 languages</span></div></div>
+      <div class="quick-action"><div class="quick-icon orange"><i class="fa-solid fa-bell"></i></div><div><strong>Notifications</strong><span>Operational · 0 failures</span></div></div>
+    </div>
+  </section>
+<section class="panel admin-management"><div class="panel-header"><div><span class="panel-eyebrow">CASE MANAGEMENT</span><h2>Government Resolution Center</h2><p class="muted">Load a complaint, update its status, and submit photo/video proof after the civic issue has actually been resolved.</p></div></div><div class="admin-form"><input id="adminComplaintId" placeholder="Complaint ID e.g. CC260907123456"><button class="btn btn-secondary" id="loadComplaint"><i class="fa-solid fa-magnifying-glass"></i> Load Case</button><select id="adminStatus"><option>Pending</option><option>In Progress</option><option>Resolution Submitted</option><option>Citizen Verification</option><option>Resolved</option><option>Closed</option><option>Reopened</option><option>Rejected</option></select><input id="adminRemark" placeholder="Case/status remark"><button class="btn btn-primary" id="adminUpdate"><i class="fa-solid fa-arrows-rotate"></i> Update Case</button></div><div id="caseSummary" class="case-summary"></div><div class="resolution-upload"><div class="upload-heading"><span class="upload-icon"><i class="fa-solid fa-camera"></i></span><div><span class="panel-eyebrow">FACULTY SUGGESTED FEATURE</span><h3>Submit Resolution Proof</h3><p>Upload the government's actual after-resolution evidence so the citizen can verify the work.</p></div></div><div class="resolution-grid"><label class="file-drop"><input type="file" id="resolutionFile" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime"><i class="fa-solid fa-cloud-arrow-up"></i><strong>Choose Photo / Video</strong><span id="resolutionFileName">JPG, PNG, WEBP, MP4 or MOV · max 15 MB</span></label><div class="resolution-fields"><input id="resolvedBy" placeholder="Officer / authority name" value="Government Officer"><textarea id="resolutionRemark" placeholder="Describe what was repaired or resolved..."></textarea><img id="resolutionPreview" class="resolution-preview" alt="Resolution preview" hidden><button class="btn btn-primary" id="submitResolution"><i class="fa-solid fa-shield-check"></i> Submit Resolution Proof</button></div></div></div><p id="adminResult" class="muted"></p></section></main>
+<script src="../js/api.js"></script><script src="../js/admin.js"></script>
+<script src="/js/chatbot.js?v=final2"></script>
+</body>
+</html>
