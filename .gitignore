@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+backend/civicconnect.db
+uploads/*
+!uploads/.gitkeep
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

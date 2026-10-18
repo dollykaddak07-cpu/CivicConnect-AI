@@ -1,0 +1,9 @@
+(function(){
+const KEY='civicConnectComplaints'; const SELECTED='selectedComplaintId';
+const seed=[
+{id:'CC1028',title:'Road damage near main junction',description:'Large potholes are causing traffic and safety problems.',location:'Central Market Road',category:'Infrastructure',priority:'Critical',department:'Public Works',confidence:94,status:'In Progress',createdAt:'2026-09-05 10:30',language:'English',timeline:[]},
+{id:'CC1027',title:'Garbage collection delayed',description:'Garbage has not been collected for two days.',location:'Ward 12',category:'Sanitation',priority:'Medium',department:'Sanitation',confidence:91,status:'Resolved',createdAt:'2026-09-03 09:20',language:'English',timeline:[]},
+{id:'CC1026',title:'Street lights not working',description:'Street lights are not working on Station Road.',location:'Station Road',category:'Electricity',priority:'Low',department:'Electricity',confidence:89,status:'Pending',createdAt:'2026-09-02 18:10',language:'English',timeline:[]},
+{id:'CC1025',title:'Water supply interruption',description:'No water supply since morning in the residential area.',location:'Shivaji Nagar',category:'Water Supply',priority:'Critical',department:'Water Department',confidence:96,status:'In Progress',createdAt:'2026-09-01 08:45',language:'English',timeline:[]}];
+function get(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}} function save(x){localStorage.setItem(KEY,JSON.stringify(x))} function init(){if(!localStorage.getItem(KEY))save(seed)} function add(c){const x=get();x.unshift(c);save(x);return c} function find(id){return get().find(c=>c.id===id)||null} function selected(){return localStorage.getItem(SELECTED)} function setSelected(id){localStorage.setItem(SELECTED,id)} function makeId(){return 'CC'+Date.now().toString().slice(-6)}
+window.CivicStore={init,get,save,add,find,selected,setSelected,makeId}; init();})();

@@ -1,0 +1,14 @@
+document.addEventListener('DOMContentLoaded',()=>{const f=document.getElementById('complaintForm');if(f)f.addEventListener('submit',submitComplaint)});
+async function submitComplaint(e){e.preventDefault();const title=v('complaintTitle'),description=v('complaintDescription'),location=v('complaintLocation');if(!title||!description||!location)return alert('Please complete title, description and location.');const b=e.target.querySelector('button[type="submit"]');b.disabled=true;b.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> AI Processing...';try{const c=await CivicAPI.api('/api/complaints',{method:'POST',body:JSON.stringify({title,description,location,latitude:num('complaintLatitude'),longitude:num('complaintLongitude'),category:v('complaintCategory'),evidence_name:document.getElementById('complaintEvidence')?.files?.[0]?.name||null})});localStorage.setItem('selectedComplaintId',c.id);const box=document.getElementById('aiResult');if(box)box.style.display='block';const s=document.getElementById('aiSummary');if(s)s.innerHTML=`Category: <strong>${esc(c.category)}</strong><br>Priority: <strong>${esc(c.priority)}</strong><br>Department: <strong>${esc(c.department)}</strong><br>Language: <strong>${esc(c.language)}</strong><br>AI Confidence: <strong>${c.confidence}%</strong>${c.ml_model?`<br>ML Model: <strong>${esc(c.ml_model)}</strong><br>ML Prediction: <strong>${esc(c.ml_category||c.category)}</strong> (${esc(c.ml_confidence??c.confidence)}%)`:''}<br>GPS: <strong>${c.latitude!=null&&c.longitude!=null?'Captured':'Manual location'}</strong>${c.duplicate_group_id?`<br><span style="color:#f59e0b"><strong>⚠ Possible Duplicate Detected</strong> — linked to <strong>${esc(c.primary_complaint_id||c.duplicate_of)}</strong> (${esc(c.duplicate_score)}% similarity). Unified case: <strong>${esc(c.duplicate_group_id)}</strong>.</span>`:'<br><span style="color:#22c55e"><strong>✓ No duplicate detected</strong></span>'}`;b.innerHTML='<i class="fa-solid fa-check"></i> Submitted Successfully';setTimeout(()=>location.href='tracking.html',900)}catch(err){alert('Backend connection failed. Start the project with run.bat, then try again.');b.disabled=false;b.innerHTML='<i class="fa-solid fa-paper-plane"></i> Submit Complaint'}}
+function v(id){return document.getElementById(id)?.value.trim()||''}function num(id){const x=parseFloat(document.getElementById(id)?.value);return Number.isFinite(x)?x:null}function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+
+const evidenceInput = document.getElementById('complaintEvidence');
+const evidenceFileName = document.getElementById('evidenceFileName');
+if (evidenceInput && evidenceFileName) {
+  evidenceInput.addEventListener('change', () => {
+    evidenceFileName.textContent = evidenceInput.files && evidenceInput.files.length
+      ? 'Selected: ' + evidenceInput.files[0].name
+      : 'No evidence selected yet';
+  });
+}
